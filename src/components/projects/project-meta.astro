@@ -1,0 +1,24 @@
+---
+interface Props {
+	status?: "active" | "maintained" | "archived";
+	tags: string[];
+}
+
+const { status, tags } = Astro.props;
+---
+
+{(status || tags.length > 0) && (
+	<div class="flex flex-wrap items-center gap-1.5">
+		{status && (
+			<span class="inline-flex items-center rounded-md border border-accent/40 px-2 py-0.5 font-mono text-xs text-accent">
+				{status}
+			</span>
+		)}
+		{tags.map((tag) => (
+			<span class="inline-flex items-center gap-1 rounded-md border border-border/60 bg-card/60 px-2 py-0.5 font-mono text-xs text-muted-foreground">
+				<span class="text-accent/70">#</span>
+				<span>{tag}</span>
+			</span>
+		))}
+	</div>
+)}

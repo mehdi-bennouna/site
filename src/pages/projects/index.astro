@@ -1,0 +1,66 @@
+---
+import { Image } from "astro:assets";
+import ProjectLinks from "../../components/projects/project-links.astro";
+import ProjectMeta from "../../components/projects/project-meta.astro";
+import Base from "../../layouts/base.astro";
+import { getProjects } from "../../lib/project-data";
+
+const projects = await getProjects();
+---
+
+<Base title="Projects" description="Things I've built, maintain, or have retired.">
+	<section class="container mx-auto px-6 pt-16 pb-20">
+		<div class="max-w-3xl mx-auto">
+			<div class="mb-10">
+				<h1 class="text-4xl font-bold tracking-tight text-foreground">Projects</h1>
+				<p class="mt-2 text-base text-muted-foreground leading-relaxed">Things I've built, maintain, or have retired.</p>
+				<div class="mt-8 border-b border-border/100" />
+			</div>
+
+			{projects.length === 0 ? (
+				<div class="text-center text-muted-foreground py-12">No projects yet.</div>
+			) : (
+				<div class="space-y-10 sm:space-y-12">
+					{projects.map((project) => (
+						<article class="group flex flex-col gap-4 sm:flex-row sm:gap-6">
+							{project.thumbnail && (
+								<div class="shrink-0 sm:w-48">
+									<Image
+										src={project.thumbnail}
+										alt={project.thumbnailAlt}
+										widths={[384, 768]}
+										sizes="(min-width: 640px) 12rem, 100vw"
+										class="aspect-video w-full rounded-md border border-border/60 bg-card object-cover"
+									/>
+								</div>
+							)}
+							<div class="flex-1 min-w-0">
+								<div class="flex items-start justify-between gap-6 sm:gap-8">
+									<h2 class="text-lg sm:text-xl font-bold tracking-tight text-foreground text-balance">
+										{project.hasWriteup ? (
+											<a href={`/projects/${project.slug}`} class="group-hover:text-primary transition-colors">
+												{project.title}
+											</a>
+										) : (
+											project.title
+										)}
+									</h2>
+									<time class="shrink-0 whitespace-nowrap pt-1 text-xs sm:text-sm text-muted-foreground">
+										{project.date.slice(0, 4)}
+									</time>
+								</div>
+								<p class="mt-2 mb-3 text-sm sm:text-base text-muted-foreground leading-relaxed text-pretty">
+									{project.description}
+								</p>
+								<div class="flex flex-col gap-3">
+									<ProjectMeta status={project.status} tags={project.tags} />
+									<ProjectLinks repo={project.repo} url={project.url} />
+								</div>
+							</div>
+						</article>
+					))}
+				</div>
+			)}
+		</div>
+	</section>
+</Base>

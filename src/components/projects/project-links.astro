@@ -1,0 +1,28 @@
+---
+import { CodeXml, ExternalLink } from "@lucide/astro";
+
+interface Props {
+	repo?: string;
+	url?: string;
+}
+
+const { repo, url } = Astro.props;
+const linkClass = "inline-flex items-center gap-1.5 text-muted-foreground transition-colors hover:text-accent";
+---
+
+{(repo || url) && (
+	<div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs">
+		{url && (
+			<a href={url} target="_blank" rel="noopener noreferrer" class={linkClass}>
+				<ExternalLink size={13} aria-hidden="true" />
+				Website
+			</a>
+		)}
+		{repo && (
+			<a href={repo} target="_blank" rel="noopener noreferrer" class={linkClass}>
+				<CodeXml size={13} aria-hidden="true" />
+				Source
+			</a>
+		)}
+	</div>
+)}
