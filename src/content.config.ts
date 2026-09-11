@@ -2,11 +2,18 @@ import { defineCollection } from "astro:content";
 import { glob } from "astro/loaders";
 import { z } from "astro/zod";
 
+// Each entry lives in its own folder (`<slug>/index.md`) so it can keep its images next to it.
+// The folder name is the entry id and URL slug.
+function folderEntries(base: string) {
+	return glob({
+		pattern: "*/index.md",
+		base,
+		generateId: ({ entry }) => entry.split("/")[0],
+	});
+}
+
 const blog = defineCollection({
-	loader: glob({
-		pattern: "**/*.md",
-		base: "./src/content/blog",
-	}),
+	loader: folderEntries("./src/content/blog"),
 	schema: z.object({
 		title: z.string(),
 		description: z.string(),
