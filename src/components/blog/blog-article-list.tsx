@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { searchArticles, type Article } from "../../lib/search";
-import { getAllTags, slugifyTag, type TagInfo } from "../../lib/tags";
+import { getAllTags, type TagInfo } from "../../lib/tags";
 import SearchBar from "./search-bar.tsx";
 
 export type { Article, TagInfo };
@@ -77,7 +77,7 @@ function ArticleItem({ article }: { article: Article }) {
 							{article.tags.map((tag) => (
 								<a
 									key={tag}
-									href={`/tags/${slugifyTag(tag)}`}
+									href={`/blog?q=${encodeURIComponent(tag)}`}
 									className="inline-flex items-center gap-1 rounded-md border border-border/60 bg-card/60 px-2 py-0.5 font-mono text-xs text-muted-foreground transition-colors hover:border-accent/40 hover:text-accent"
 								>
 									<span className="text-accent/70">#</span>
@@ -123,7 +123,7 @@ export default function BlogArticleList({ articles = [], initialQuery = "", tags
 						{allTags.map((tag) => (
 							<a
 								key={tag.slug}
-								href={`/tags/${tag.slug}`}
+								href={`/blog?q=${encodeURIComponent(tag.name)}`}
 								className="group inline-flex items-center gap-1.5 rounded-lg border border-border/60 bg-card/60 px-3 py-1 text-xs text-muted-foreground transition-all hover:border-accent/40 hover:text-accent hover:bg-card"
 							>
 								<span className="text-accent/70 font-mono">#</span>

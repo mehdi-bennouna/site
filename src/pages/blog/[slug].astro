@@ -5,7 +5,6 @@ import { TOC } from "astro-toc";
 import { getCollection, render } from "astro:content";
 import Base from "../../layouts/base.astro";
 import { getBlogArticles } from "../../lib/blog-data.ts";
-import { slugifyTag } from "../../lib/tags";
 import "../../styles/blog.css";
 import "katex/dist/katex.min.css";
 
@@ -106,7 +105,7 @@ const pageUrl = Astro.url?.href ?? undefined;
 							<div class="mt-4 flex flex-wrap gap-1.5">
 								{tagList.map((tag) => (
 									<a
-										href={`/tags/${slugifyTag(tag)}`}
+										href={`/blog?q=${encodeURIComponent(tag)}`}
 										class="inline-flex items-center gap-1 rounded-md border border-border bg-card px-2 py-0.5 font-mono text-[0.6875rem] text-muted-foreground transition-colors hover:border-accent/50 hover:text-accent"
 									>
 										<span class="text-accent/70">#</span>
