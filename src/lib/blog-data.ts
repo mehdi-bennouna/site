@@ -1,5 +1,5 @@
 import { getCollection, type CollectionEntry } from "astro:content";
-import type { Post } from "./search";
+import type { Article } from "./search";
 
 export type BlogEntry = CollectionEntry<"blog">;
 
@@ -33,7 +33,7 @@ export function calculateReadMinutes(words: number, wordsPerMinute: number = WOR
 	return Math.max(1, Math.round(words / wordsPerMinute));
 }
 
-export function formatBlogPost(entry: BlogEntry): Post {
+export function formatBlogArticle(entry: BlogEntry): Article {
 	const body = (entry as { body?: string }).body ?? "";
 	const wordCount = countWords(body);
 	const readMinutes = calculateReadMinutes(wordCount);
@@ -52,7 +52,7 @@ export function formatBlogPost(entry: BlogEntry): Post {
 	};
 }
 
-export async function getBlogPosts(options: BlogDataOptions = {}): Promise<Post[]> {
+export async function getBlogArticles(options: BlogDataOptions = {}): Promise<Article[]> {
 	const { includeDrafts = false } = options;
 
 	const entries = await getCollection("blog", (entry) => {
@@ -65,7 +65,7 @@ export async function getBlogPosts(options: BlogDataOptions = {}): Promise<Post[
 		return timeB - timeA;
 	});
 
-	return entries.map(formatBlogPost);
+	return entries.map(formatBlogArticle);
 }
 
-export const getBlogData = getBlogPosts;
+export const getBlogData = getBlogArticles;

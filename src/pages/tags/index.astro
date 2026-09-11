@@ -1,11 +1,11 @@
 ---
 import Base from "../../layouts/base.astro";
-import { getBlogPosts } from "../../lib/blog-data";
+import { getBlogArticles } from "../../lib/blog-data";
 import { info } from "../../lib/info";
 import { getAllTags } from "../../lib/tags";
 
-const posts = await getBlogPosts();
-const tags = getAllTags(posts);
+const articles = await getBlogArticles();
+const tags = getAllTags(articles);
 ---
 
 <Base title={`Tags - ${info.site.name}`} description="All topics and tags across articles.">
@@ -26,7 +26,7 @@ const tags = getAllTags(posts);
 								{tag.name}
 							</span>
 							<span class="shrink-0 text-xs text-muted-foreground">
-								{tag.count} {tag.count === 1 ? "post" : "posts"}
+								{tag.count} {tag.count === 1 ? "article" : "articles"}
 							</span>
 						</a>
 					</li>

@@ -1,15 +1,15 @@
 import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { createPortal } from "react-dom";
-import { searchPosts, type Post } from "../../lib/search";
+import { searchArticles, type Article } from "../../lib/search";
 
 
 export type SearchOverlayProps = {
 	open: boolean;
-	posts?: Post[];
+	articles?: Article[];
 	initialQuery?: string;
 	onQueryChange?: (value: string) => void;
 	onClose: () => void;
-	onSelect: (post: Post) => void;
+	onSelect: (article: Article) => void;
 };
 
 function formatDisplayDate(dateStr?: string): string {
@@ -36,7 +36,7 @@ function Kbd({ children }: Readonly<{ children: ReactNode }>) {
 	);
 }
 
-export default function SearchOverlay({ open, posts = [], initialQuery = "", onQueryChange, onClose, onSelect }: SearchOverlayProps) {
+export default function SearchOverlay({ open, articles = [], initialQuery = "", onQueryChange, onClose, onSelect }: SearchOverlayProps) {
 	const [query, setQuery] = useState(initialQuery ?? "");
 	const [activeIndex, setActiveIndex] = useState(0);
 	const inputRef = useRef<HTMLInputElement>(null);
@@ -47,7 +47,7 @@ export default function SearchOverlay({ open, posts = [], initialQuery = "", onQ
 		initialQueryRef.current = initialQuery;
 	}, [initialQuery]);
 
-	const results = useMemo(() => searchPosts(posts || [], query || ""), [posts, query]);
+	const results = useMemo(() => searchArticles(articles || [], query || ""), [articles, query]);
 
 	useEffect(() => {
 		if (!open) return;
@@ -83,8 +83,8 @@ export default function SearchOverlay({ open, posts = [], initialQuery = "", onQ
 				setActiveIndex((i) => (i - 1 + results.length) % results.length);
 			} else if (e.key === "Enter") {
 				e.preventDefault();
-				const post = results[activeIndex];
-				if (post) onSelect(post);
+				const article = results[activeIndex];
+				if (article) onSelect(article);
 			}
 		};
 		window.addEventListener("keydown", handleKeyDown);
@@ -147,15 +147,15 @@ export default function SearchOverlay({ open, posts = [], initialQuery = "", onQ
 							No matching articles found{query.trim() ? ` for "${query.trim()}"` : ""}.
 						</div>
 					) : (
-						results.map((post, idx) => {
+						results.map((article, idx) => {
 							const active = idx === activeIndex;
 							return (
 								<a
-									key={post.slug}
-									href={`/blog/${post.slug}`}
+									key={article.slug}
+									href={`/blog/${article.slug}`}
 									data-active={active ? "true" : undefined}
 									onMouseEnter={() => setActiveIndex(idx)}
-									onClick={() => onSelect(post)}
+									onClick={() => onSelect(article)}
 									className={`mx-1.5 block rounded-lg px-3 py-2.5 transition-colors ${
 										active ? "bg-muted" : "hover:bg-muted/60"
 									}`}
@@ -167,17 +167,17 @@ export default function SearchOverlay({ open, posts = [], initialQuery = "", onQ
 													active ? "text-accent" : "text-foreground"
 												}`}
 											>
-												{post.title}
+												{article.title}
 											</h4>
-											<p className="mt-0.5 line-clamp-1 text-xs text-muted-foreground">{post.excerpt}</p>
+											<p className="mt-0.5 line-clamp-1 text-xs text-muted-foreground">{article.excerpt}</p>
 										</div>
 										<time className="shrink-0 whitespace-nowrap pt-0.5 text-xs text-muted-foreground/70">
-											{formatDisplayDate(post.date)}
+											{formatDisplayDate(article.date)}
 										</time>
 									</div>
-									{(post.tags?.length > 0 || typeof post.readMinutes === "number") && (
+									{(article.tags?.length > 0 || typeof article.readMinutes === "number") && (
 										<div className="mt-1.5 flex flex-wrap items-center gap-1.5">
-											{(post.tags ?? []).slice(0, 3).map((tag) => (
+											{(article.tags ?? []).slice(0, 3).map((tag) => (
 												<span
 													key={tag}
 													className="inline-flex items-center gap-1 rounded-md border border-border/60 bg-card/60 px-1.5 py-0.5 font-mono text-[10px] text-muted-foreground"
@@ -186,8 +186,8 @@ export default function SearchOverlay({ open, posts = [], initialQuery = "", onQ
 													{tag}
 												</span>
 											))}
-											{typeof post.readMinutes === "number" && (
-												<span className="text-[11px] text-muted-foreground/60">{post.readMinutes} min read</span>
+											{typeof article.readMinutes === "number" && (
+												<span className="text-[11px] text-muted-foreground/60">{article.readMinutes} min read</span>
 											)}
 										</div>
 									)}

@@ -4,24 +4,24 @@ import type { GetStaticPaths } from "astro";
 import { TOC } from "astro-toc";
 import { getCollection, render } from "astro:content";
 import Base from "../../layouts/base.astro";
-import { getBlogPosts } from "../../lib/blog-data.ts";
+import { getBlogArticles } from "../../lib/blog-data.ts";
 import { slugifyTag } from "../../lib/tags";
 import "../../styles/blog.css";
 import "katex/dist/katex.min.css";
 
 export const getStaticPaths = (async () => {
-	const blogPosts = await getCollection("blog", (p) => !p.data.draft);
-	return blogPosts.map((blogPost) => ({
-		params: { slug: blogPost.id },
-		props: { blogPost },
+	const blogArticles = await getCollection("blog", (p) => !p.data.draft);
+	return blogArticles.map((blogArticle) => ({
+		params: { slug: blogArticle.id },
+		props: { blogArticle },
 	}));
 }) satisfies GetStaticPaths;
 
-const { blogPost } = Astro.props as { blogPost: import("astro:content").CollectionEntry<"blog"> };
+const { blogArticle } = Astro.props as { blogArticle: import("astro:content").CollectionEntry<"blog"> };
 
-const { title, description, date, tags, ogImage } = blogPost.data as any;
+const { title, description, date, tags, ogImage } = blogArticle.data as any;
 
-const { Content, headings } = await render(blogPost);
+const { Content, headings } = await render(blogArticle);
 type H = { depth?: number; text?: string; title?: string; slug?: string };
 const safeHeadings: H[] = Array.isArray(headings) ? (headings as unknown as H[]) : [];
 const mapDepth = (d: number) => (d <= 2 ? 1 : d === 3 ? 2 : 3);
@@ -52,10 +52,10 @@ const formatShortDate = (d: string) => {
 	return dt.toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" });
 };
 
-const posts = await getBlogPosts();
-const idx = posts.findIndex((p) => p.slug === blogPost.id);
-const older = idx >= 0 && idx < posts.length - 1 ? posts[idx + 1] : null;
-const newer = idx > 0 ? posts[idx - 1] : null;
+const articles = await getBlogArticles();
+const idx = articles.findIndex((p) => p.slug === blogArticle.id);
+const older = idx >= 0 && idx < articles.length - 1 ? articles[idx + 1] : null;
+const newer = idx > 0 ? articles[idx - 1] : null;
 
 const pageUrl = Astro.url?.href ?? undefined;
 ---

@@ -17,12 +17,12 @@ export function formatTagLabel(tag: string): string {
 	return String(tag).trim();
 }
 
-export function getAllTags(posts: Array<{ tags?: string[] }>): TagInfo[] {
+export function getAllTags(articles: Array<{ tags?: string[] }>): TagInfo[] {
 	const tagMap = new Map<string, { name: string; count: number }>();
 
-	for (const post of posts || []) {
-		if (!Array.isArray(post.tags)) continue;
-		for (const rawTag of post.tags) {
+	for (const article of articles || []) {
+		if (!Array.isArray(article.tags)) continue;
+		for (const rawTag of article.tags) {
 			if (!rawTag) continue;
 			const slug = slugifyTag(rawTag);
 			if (!slug) continue;

@@ -1,12 +1,12 @@
 import { useEffect, useMemo, useState } from "react";
-import { searchPosts, type Post } from "../../lib/search";
+import { searchArticles, type Article } from "../../lib/search";
 import { getAllTags, slugifyTag, type TagInfo } from "../../lib/tags";
 import SearchBar from "./search-bar.tsx";
 
-export type { Post, TagInfo };
+export type { Article, TagInfo };
 
-export type BlogPostListProps = {
-	posts?: Post[];
+export type BlogArticleListProps = {
+	articles?: Article[];
 	initialQuery?: string;
 	tags?: TagInfo[];
 };
@@ -61,20 +61,20 @@ function useUrlQuery(initialQuery: string = "") {
 	return [query, setQuery] as const;
 }
 
-function PostItem({ post }: { post: Post }) {
+function ArticleItem({ article }: { article: Article }) {
 	return (
 		<article className="group">
 			<div className="flex items-start justify-between gap-6 sm:gap-8">
 				<div className="flex-1 min-w-0">
 					<h3 className="text-lg sm:text-xl font-bold tracking-tight text-foreground group-hover:text-primary transition-colors text-balance">
-						<a href={`/blog/${post.slug}`} className="hover:text-primary">
-							{post.title}
+						<a href={`/blog/${article.slug}`} className="hover:text-primary">
+							{article.title}
 						</a>
 					</h3>
-					<p className="mt-2 mb-3 text-sm sm:text-base text-muted-foreground leading-relaxed text-pretty">{post.excerpt}</p>
-					{post.tags && post.tags.length > 0 && (
+					<p className="mt-2 mb-3 text-sm sm:text-base text-muted-foreground leading-relaxed text-pretty">{article.excerpt}</p>
+					{article.tags && article.tags.length > 0 && (
 						<div className="flex flex-wrap gap-1.5">
-							{post.tags.map((tag) => (
+							{article.tags.map((tag) => (
 								<a
 									key={tag}
 									href={`/tags/${slugifyTag(tag)}`}
@@ -88,9 +88,9 @@ function PostItem({ post }: { post: Post }) {
 					)}
 				</div>
 				<div className="text-right shrink-0 whitespace-nowrap pt-0.5">
-					<time className="text-xs sm:text-sm text-muted-foreground block">{formatDisplayDate(post.date)}</time>
-					{typeof post.readMinutes === "number" && (
-						<span className="text-xs text-muted-foreground/70 block mt-0.5">{post.readMinutes} min read</span>
+					<time className="text-xs sm:text-sm text-muted-foreground block">{formatDisplayDate(article.date)}</time>
+					{typeof article.readMinutes === "number" && (
+						<span className="text-xs text-muted-foreground/70 block mt-0.5">{article.readMinutes} min read</span>
 					)}
 				</div>
 			</div>
@@ -98,25 +98,25 @@ function PostItem({ post }: { post: Post }) {
 	);
 }
 
-export default function BlogPostList({ posts = [], initialQuery = "", tags }: BlogPostListProps) {
+export default function BlogArticleList({ articles = [], initialQuery = "", tags }: BlogArticleListProps) {
 	const [query, setQuery] = useUrlQuery(initialQuery);
 
 	const allTags = useMemo(() => {
 		if (tags && tags.length > 0) return tags;
-		return getAllTags(posts);
-	}, [posts, tags]);
+		return getAllTags(articles);
+	}, [articles, tags]);
 
-	const filteredPosts = useMemo(() => {
-		return searchPosts(posts || [], query || "");
-	}, [posts, query]);
+	const filteredArticles = useMemo(() => {
+		return searchArticles(articles || [], query || "");
+	}, [articles, query]);
 
-	const safePosts = filteredPosts || [];
+	const safeArticles = filteredArticles || [];
 
 	return (
 		<div className="max-w-3xl mx-auto">
 			<div className="mb-10">
 				<div className="max-w-md">
-					<SearchBar value={query || ""} onChange={setQuery} placeholder="Search articles..." posts={posts} />
+					<SearchBar value={query || ""} onChange={setQuery} placeholder="Search articles..." articles={articles} />
 				</div>
 				{allTags.length > 0 && (
 					<div className="mt-4 flex flex-wrap gap-2">
@@ -136,14 +136,14 @@ export default function BlogPostList({ posts = [], initialQuery = "", tags }: Bl
 				<div className="mt-4 border-b border-border/100" />
 			</div>
 
-			{safePosts.length === 0 ? (
+			{safeArticles.length === 0 ? (
 				<div className="text-center text-muted-foreground py-12" aria-live="polite" role="status">
 					No matching articles found.
 				</div>
 			) : (
 				<div className="space-y-10 sm:space-y-12">
-					{safePosts.map((post) => (
-						<PostItem key={post.slug} post={post} />
+					{safeArticles.map((article) => (
+						<ArticleItem key={article.slug} article={article} />
 					))}
 				</div>
 			)}

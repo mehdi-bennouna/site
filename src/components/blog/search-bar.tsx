@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, type ChangeEvent } from "react";
-import type { Post } from "../../lib/search";
+import type { Article } from "../../lib/search";
 import SearchOverlay from "./search-overlay";
 
 export type SearchBarProps = {
@@ -7,7 +7,7 @@ export type SearchBarProps = {
 	onChange?: (value: string) => void;
 	placeholder?: string;
 	className?: string;
-	posts?: Post[];
+	articles?: Article[];
 };
 
 export default function SearchBar({
@@ -15,7 +15,7 @@ export default function SearchBar({
 	onChange,
 	placeholder = "Search articles...",
 	className = "",
-	posts = [],
+	articles = [],
 }: SearchBarProps) {
 	const inputRef = useRef<HTMLInputElement>(null);
 	const [shortcutLabel, setShortcutLabel] = useState("Ctrl K");
@@ -37,10 +37,10 @@ export default function SearchBar({
 		return () => window.removeEventListener("keydown", handleKeyDown);
 	}, []);
 
-	const handleSelect = (post: Post) => {
+	const handleSelect = (article: Article) => {
 		setOpen(false);
-		onChange?.(post.title);
-		window.location.assign(`/archives/${post.slug}`);
+		onChange?.(article.title);
+		window.location.assign(`/archives/${article.slug}`);
 	};
 
 	return (
@@ -79,7 +79,7 @@ export default function SearchBar({
 			</div>
 			<SearchOverlay
 				open={open}
-				posts={posts}
+				articles={articles}
 				initialQuery={value ?? ""}
 				onQueryChange={onChange}
 				onClose={() => setOpen(false)}
