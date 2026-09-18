@@ -2,7 +2,7 @@
 import { unified } from "@astrojs/markdown-remark";
 import react from "@astrojs/react";
 import tailwindcss from "@tailwindcss/vite";
-import { defineConfig } from "astro/config";
+import { defineConfig, fontProviders } from "astro/config";
 import rehypeExpressiveCode from "rehype-expressive-code";
 import rehypeKatex from "rehype-katex";
 import rehypeSlug from "rehype-slug";
@@ -70,6 +70,22 @@ export default defineConfig({
 	},
 
 	integrations: [react()],
+
+	prefetch: {
+		prefetchAll: true,
+	},
+
+	fonts: [
+		{
+			provider: fontProviders.google(),
+			name: "JetBrains Mono",
+			cssVariable: "--font-jetbrains-web",
+			weights: ["100 800"],
+			styles: ["normal", "italic"],
+			subsets: ["latin"],
+			fallbacks: ["monospace"],
+		},
+	],
 
 	markdown: {
 		syntaxHighlight: false,

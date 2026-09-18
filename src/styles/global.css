@@ -44,7 +44,7 @@
 	--sidebar-border: oklch(90% 0.004 286); /* sidebar borders */
 	--sidebar-ring: oklch(54% 0.22 293); /* sidebar focus ring */
 	--font-jetbrains-mono:
-		"JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+		var(--font-jetbrains-web), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 	--font-jetbrains: var(--font-jetbrains-mono); /* all text uses JetBrains */
 }
 

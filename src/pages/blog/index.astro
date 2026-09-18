@@ -14,6 +14,6 @@ const blogArticles = await getBlogArticles();
 				Notes on software engineering, performance, and the tools I use to build things.
 			</p>
 		</div>
-		<BlogArticleList articles={blogArticles} client:load />
+		<BlogArticleList articles={blogArticles} client:idle />
 	</section>
 </Base>

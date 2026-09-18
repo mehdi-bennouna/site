@@ -1,6 +1,6 @@
 ---
 import "../styles/global.css";
-import "katex/dist/katex.min.css";
+import { Font } from "astro:assets";
 import Navigation from "../components/navigation.astro";
 import { info } from "../lib/info.ts";
 
@@ -11,8 +11,8 @@ interface BaseProps {
 }
 const { title = info.site.title, description = info.site.description, ogImage } = Astro.props as BaseProps;
 const siteName = info.site.name;
-const canonical = info.site.url;
 const siteUrl = info.site.url;
+const canonical = siteUrl ? new URL(Astro.url.pathname, siteUrl).href : undefined;
 const siteLocale = info.site.locale ?? "en_US";
 const resolvedOgImage = ogImage ?? (info.site.ogImage || undefined);
 ---
@@ -30,12 +30,7 @@ const resolvedOgImage = ogImage ?? (info.site.ogImage || undefined);
 		<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#131316" />
 		<meta name="theme-color" media="(prefers-color-scheme: light)" content="#fcfcfd" />
 		<meta name="robots" content="index,follow" />
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link
-			href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap"
-			rel="stylesheet"
-		/>
+		<Font cssVariable="--font-jetbrains-web" preload={[{ style: "normal" }]} />
 		<script is:inline>
 			(() => {
 				const stored = localStorage.getItem("theme");
@@ -70,7 +65,7 @@ const resolvedOgImage = ogImage ?? (info.site.ogImage || undefined);
 					"url": siteUrl,
 					"potentialAction": {
 						"@type": "SearchAction",
-						"target": `${siteUrl}/archives?q={search_term_string}`,
+						"target": `${siteUrl}/blog?q={search_term_string}`,
 						"query-input": "required name=search_term_string",
 					},
 				})}
