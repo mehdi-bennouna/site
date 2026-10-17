@@ -51,13 +51,9 @@
 				"company": "Confidential",
 				"period": "August 2024 — September 2026",
 				"description": [
-					"Built backend APIs (Express, Fastify, Prisma, Kysely) on PostgreSQL MongoDB, scaling a platform to thousands of active users",
-					"Delivered real-time features (WebSockets, Redis) and engineered the core payment engine, featuring a fully auditable balance ledger to securely manage transactions and user funds",
-					"Built web apps user-facing (Next.js, React, Tailwind, Tanstack), backoffice, admin apps with polished, mobile-like UX",
-					"Used Playwright extensively for internal workflow automation and data scraping tools, extending its use into QA testing across the platform’s web apps to improve coverage",
-					"Automated background jobs (BullMQ) and secured systems with JWT and Zitadel SSO",
-					"Implemented full observability (Grafana, OpenTelemetry) across all services, improving incident detection and prevention",
-					"Automated deployments and secrets management (Docker, Ansible, GitLab CI, HashiCorp Vault) across multiple VPS instances"
+					"Built backend APIs (Express, Fastify, PostgreSQL, MongoDB) for a platform serving thousands of active users, including a payment engine with a fully auditable balance ledger and real-time features over WebSockets and Redis.",
+					"Shipped user-facing, backoffice and admin web apps (Next.js, React, TanStack), and used Playwright for workflow automation, scraping and QA testing.",
+					"Owned the infrastructure: background jobs (BullMQ), SSO (Zitadel), automated deployments and secrets (Docker, Ansible, GitLab CI, Vault), and observability (Grafana, OpenTelemetry)."
 				]
 			},
 			{
@@ -65,14 +61,9 @@
 				"company": "Sahla Solutions",
 				"period": "December 2023 — August 2024",
 				"description": [
-					"Built backend services for a ride-hailing platform spanning five apps (rider, driver, back-office, rider support, customer support), supporting a base of 25k drivers",
-					"Engineered rider-driver matching and live position tracking with Redis Geo, Mapbox and Google Maps, covering geospatial search, routing and ETAs",
-					"Scaled realtime services (Socket.IO, Redis pub/sub) across distributed servers, keeping ride state and driver locations in sync",
-					"Developed payment management for local digital payments and driver-confirmed cash rides, covering commissions, driver balances and reconciliation",
-					"Implemented regulatory compliance, including data-retention policies, driver verification workflows and payment record-keeping, to meet local transport and data-protection requirements",
-					"Designed an event-driven architecture delivering multi-channel notifications reliably and decoupling services as the platform grew",
-					"Implemented a double-entry ledger as the financial source of truth, giving every ride, commission and payout a balanced, auditable record",
-					"Set up logging and observability across the whole stack, and built internal web tools (ledger viewer, queue inspector, mock driver simulator) that helped the dev team debug production issues and test faster"
+					"Built backend services for a ride-hailing platform of five apps serving 25k drivers. Engineered rider-driver matching and live tracking (Redis Geo, Mapbox, Google Maps), with realtime sync across distributed servers (Socket.IO, Redis pub/sub).",
+					"Developed payments for digital and cash rides on top of a double-entry ledger, and implemented regulatory compliance for data retention, driver verification and record-keeping.",
+					"Designed an event-driven architecture for multi-channel notifications, set up observability across the stack, and built internal tools (ledger viewer, queue inspector, driver simulator) that sped up debugging and testing."
 				]
 			},
 			{
@@ -80,9 +71,7 @@
 				"company": "Self Employed",
 				"period": "April 2023 — December 2023",
 				"description": [
-					"Delivered APIs, business websites, and full-stack apps for local and international clients",
-					"Built the Nusuk.sa website (Next.js, Express) and an Electron-based touchscreen kiosk app for live events",
-					"Built the frontend for META-Z, a Web3 metaverse game, integrating MetaMask and Web3.js"
+					"Delivered APIs, business websites and full-stack apps for local and international clients. Highlights include the Nusuk.sa website (Next.js, Express), an Electron-based touchscreen kiosk app for live events, and the frontend for META-Z, a Web3 metaverse game integrating MetaMask and Web3.js."
 				]
 			},
 			{
@@ -90,8 +79,7 @@
 				"company": "Code213",
 				"period": "April 2023 — December 2023",
 				"description": [
-					"Delivered a comprehensive 6-month MERN stack curriculum (HTML, CSS, JavaScript, React, Node.js, MongoDB) to three distinct student cohorts",
-					"Guided students through end-to-end capstone project development, ensuring technical readiness for school arranged internships"
+					"Delivered a comprehensive 6-month MERN stack curriculum (HTML, CSS, JavaScript, React, Node.js, MongoDB) to three distinct student cohorts, guiding them through end-to-end capstone projects to ensure technical readiness for school-arranged internships."
 				]
 			},
 			{
@@ -99,8 +87,7 @@
 				"company": "Gomycode",
 				"period": "September 2022 — April 2023",
 				"description": [
-					"Taught Python fundamentals and full-stack web development (HTML, CSS, JS, React, Node.js, MongoDB) in-person courses",
-					"Mentored students through capstone projects, preparing them for school-arranged internships"
+					"Taught in-person courses on Python fundamentals and full-stack web development (HTML, CSS, JS, React, Node.js, MongoDB), and mentored students through their capstone projects to prepare them for school-arranged internships."
 				]
 			}
 		],

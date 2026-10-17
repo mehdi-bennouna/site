@@ -99,11 +99,11 @@ import { contacts, resume } from "../../lib/info";
 									</h3>
 									<span class="text-xs text-muted-foreground shrink-0">{exp.period}</span>
 								</div>
-								<ul class="list-disc list-inside space-y-1 text-sm text-foreground/80">
+								<div class="space-y-2 text-sm text-foreground/80 leading-relaxed">
 									{exp.description.map((desc) => (
-										<li class="text-pretty">{desc}</li>
+										<p class="text-pretty">{desc}</p>
 									))}
-								</ul>
+								</div>
 							</div>
 						))}
 					</div>
