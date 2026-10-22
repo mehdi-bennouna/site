@@ -3,12 +3,12 @@
 	"role": "Software Engineer",
 	"home": {
 		"bio": "Generalist software engineer focused on building reliable, maintainable systems — equally comfortable across the frontend, backend, and infrastructure layers.",
-		"note": "Thanks for visiting! This is a demo site with placeholder content."
+		"note": "Thanks for visiting!"
 	},
 	"site": {
 		"name": "example.com",
 		"url": "https://example.com",
-		"title": "John Doe - Software Engineer",
+		"title": "Mehdi Bennouna - Software Engineer",
 		"description": "Software engineer specializing in web applications, APIs, and cloud infrastructure",
 		"locale": "en_US",
 		"ogImage": ""
@@ -40,12 +40,12 @@
 			},
 			"pgp": {
 				"label": "download pgp",
-				"text": "publickey.asc",
-				"href": "/pgp/publickey.asc",
-				"filename": "publickey.asc"
+				"text": "public-key.asc",
+				"href": "/pgp/public-key.asc",
+				"filename": "public-key.asc"
 			}
 		},
-		"pgpFingerprint": "AAAA AAAA AAAA AAAA AAAA AAAA AAAA",
+		"pgpFingerprint": "C8B905DEFB8C8C407AE1E71DFCBC9D0493270D54",
 		"experience": [
 			{
 				"role": "Full Stack & Devops Engineer",
