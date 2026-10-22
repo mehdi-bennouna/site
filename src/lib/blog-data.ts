@@ -1,7 +1,7 @@
-import { getCollection, type CollectionEntry } from 'astro:content';
-import type { Post } from './search';
+import { getCollection, type CollectionEntry } from "astro:content";
+import type { Post } from "./search";
 
-export type BlogEntry = CollectionEntry<'blog-posts'>;
+export type BlogEntry = CollectionEntry<"blog">;
 
 export interface BlogDataOptions {
 	includeDrafts?: boolean;
@@ -34,14 +34,12 @@ export function calculateReadMinutes(words: number, wordsPerMinute: number = WOR
 }
 
 export function formatBlogPost(entry: BlogEntry): Post {
-	const body = (entry as { body?: string }).body ?? '';
+	const body = (entry as { body?: string }).body ?? "";
 	const wordCount = countWords(body);
 	const readMinutes = calculateReadMinutes(wordCount);
 
 	const dateObj = entry.data.date instanceof Date ? entry.data.date : new Date(entry.data.date);
-	const dateStr = !isNaN(dateObj.getTime())
-		? dateObj.toISOString().slice(0, 10)
-		: String(entry.data.date ?? '');
+	const dateStr = !isNaN(dateObj.getTime()) ? dateObj.toISOString().slice(0, 10) : String(entry.data.date ?? "");
 
 	return {
 		slug: entry.id,
@@ -57,7 +55,7 @@ export function formatBlogPost(entry: BlogEntry): Post {
 export async function getBlogPosts(options: BlogDataOptions = {}): Promise<Post[]> {
 	const { includeDrafts = false } = options;
 
-	const entries = await getCollection('blog-posts', (entry) => {
+	const entries = await getCollection("blog", (entry) => {
 		return includeDrafts || !entry.data.draft;
 	});
 
