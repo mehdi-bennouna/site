@@ -1,0 +1,19 @@
+---
+import BlogPostList from "../../components/blog/blog-post-list";
+import Base from "../../layouts/base.astro";
+import { getBlogPosts } from "../../lib/blog-data";
+
+const blogPosts = await getBlogPosts();
+---
+
+<Base title="Blog" description="Notes on software engineering, performance, and the tools I use to build things.">
+	<section class="container mx-auto px-6 pt-16 pb-20">
+		<div class="max-w-3xl mx-auto mb-8">
+			<h1 class="text-4xl font-bold tracking-tight text-foreground">Blog</h1>
+			<p class="mt-2 text-base text-muted-foreground leading-relaxed">
+				Notes on software engineering, performance, and the tools I use to build things.
+			</p>
+		</div>
+		<BlogPostList posts={blogPosts} client:load />
+	</section>
+</Base>
