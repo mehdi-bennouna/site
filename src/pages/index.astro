@@ -1,16 +1,33 @@
 ---
+import siteInfo from "../../public/user.json";
+import Base from "../layouts/base.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Base title={siteInfo.site.title} description={siteInfo.site.description}>
+	<section class="container mx-auto px-6 py-16 flex-grow flex flex-col justify-center">
+		<div class="max-w-3xl mx-auto w-full">
+			<h1 class="mb-2 text-4xl md:text-5xl font-bold tracking-tight text-balance">{siteInfo.name}</h1>
+			<p class="mb-4 text-lg md:text-xl text-muted-foreground">{siteInfo.role}</p>
+
+			<p class="mb-4 text-base md:text-lg text-foreground/85 leading-relaxed text-pretty">{siteInfo.home.bio}</p>
+			<p class="mb-10 text-base md:text-lg text-foreground/85 leading-relaxed text-pretty">{siteInfo.home.note}</p>
+
+			<div class="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm">
+				{siteInfo.contacts.map((contact) => (
+					<div>
+						[{contact.label}:{" "}
+						<a
+							href={contact.href}
+							target={contact.target}
+							rel={contact.rel}
+							class="text-muted-foreground underline underline-offset-2 decoration-accent/50 hover:text-accent hover:decoration-accent transition-colors"
+						>
+							{contact.text}
+						</a>
+						]
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+</Base>

@@ -1,0 +1,192 @@
+{
+	"name": "Mehdi Bennouna",
+	"role": "Software Engineer",
+	"home": {
+		"bio": "Generalist software engineer focused on building reliable, maintainable systems — equally comfortable across the frontend, backend, and infrastructure layers.",
+		"note": "Thanks for visiting! This is a demo site with placeholder content."
+	},
+	"site": {
+		"name": "example.com",
+		"url": "https://example.com",
+		"title": "John Doe - Software Engineer",
+		"description": "Software engineer specializing in web applications, APIs, and cloud infrastructure",
+		"locale": "en_US",
+		"ogImage": ""
+	},
+	"contacts": [
+		{
+			"label": "email",
+			"text": "mehdi.m.bennouna@gmail.com",
+			"href": "mailto:mehdi.m.bennouna@gmail.com"
+		},
+		{
+			"label": "github",
+			"text": "@Mehdi-Bennouna",
+			"href": "https://github.com/Mehdi-Bennouna",
+			"target": "_blank",
+			"rel": "noopener noreferrer"
+		}
+	],
+	"resume": {
+		"name": "Mehdi Bennouna",
+		"role": "Software Engineer",
+		"bio": "Software engineer with a broad background across web applications, APIs, databases, and cloud infrastructure. Focused on clean architecture, automation, and shipping reliable software.",
+		"downloads": {
+			"file": {
+				"label": "Resume",
+				"text": "resume.pdf",
+				"href": "/resume.pdf",
+				"filename": "resume.pdf"
+			},
+			"pgp": {
+				"label": "download pgp",
+				"text": "publickey.asc",
+				"href": "/pgp/publickey.asc",
+				"filename": "publickey.asc"
+			}
+		},
+		"pgpFingerprint": "AAAA AAAA AAAA AAAA AAAA AAAA AAAA",
+		"experience": [
+			{
+				"role": "Full Stack & Devops Engineer",
+				"company": "Confidential",
+				"period": "August 2024 — September 2026",
+				"description": [
+					"Built backend APIs (Express, Fastify, Prisma, Kysely) on PostgreSQL MongoDB, scaling a platform to thousands of active users",
+					"Delivered real-time features (WebSockets, Redis) and engineered the core payment engine, featuring a fully auditable balance ledger to securely manage transactions and user funds",
+					"Built web apps user-facing (Next.js, React, Tailwind, Tanstack), backoffice, admin apps with polished, mobile-like UX",
+					"Used Playwright extensively for internal workflow automation and data scraping tools, extending its use into QA testing across the platform’s web apps to improve coverage",
+					"Automated background jobs (BullMQ) and secured systems with JWT and Zitadel SSO",
+					"Implemented full observability (Grafana, OpenTelemetry) across all services, improving incident detection and prevention",
+					"Automated deployments and secrets management (Docker, Ansible, GitLab CI, HashiCorp Vault) across multiple VPS instances"
+				]
+			},
+			{
+				"role": "Full Stack Engineer ",
+				"company": "Sahla Solutions",
+				"period": "December 2023 — August 2024",
+				"description": [
+					"Built backend services for a ride-hailing platform spanning five apps (rider, driver, back-office, rider support, customer support), supporting a base of 25k drivers",
+					"Engineered rider-driver matching and live position tracking with Redis Geo, Mapbox and Google Maps, covering geospatial search, routing and ETAs",
+					"Scaled realtime services (Socket.IO, Redis pub/sub) across distributed servers, keeping ride state and driver locations in sync",
+					"Developed payment management for local digital payments and driver-confirmed cash rides, covering commissions, driver balances and reconciliation",
+					"Implemented regulatory compliance, including data-retention policies, driver verification workflows and payment record-keeping, to meet local transport and data-protection requirements",
+					"Designed an event-driven architecture delivering multi-channel notifications reliably and decoupling services as the platform grew",
+					"Implemented a double-entry ledger as the financial source of truth, giving every ride, commission and payout a balanced, auditable record",
+					"Set up logging and observability across the whole stack, and built internal web tools (ledger viewer, queue inspector, mock driver simulator) that helped the dev team debug production issues and test faster"
+				]
+			},
+			{
+				"role": "Freelance Software Developer",
+				"company": "Self Employed",
+				"period": "April 2023 — December 2023",
+				"description": [
+					"Delivered APIs, business websites, and full-stack apps for local and international clients",
+					"Built the Nusuk.sa website (Next.js, Express) and an Electron-based touchscreen kiosk app for live events",
+					"Built the frontend for META-Z, a Web3 metaverse game, integrating MetaMask and Web3.js"
+				]
+			},
+			{
+				"role": "Full Stack Web Development Instructor",
+				"company": "Code213",
+				"period": "April 2023 — December 2023",
+				"description": [
+					"Delivered a comprehensive 6-month MERN stack curriculum (HTML, CSS, JavaScript, React, Node.js, MongoDB) to three distinct student cohorts",
+					"Guided students through end-to-end capstone project development, ensuring technical readiness for school arranged internships"
+				]
+			},
+			{
+				"role": "Full Stack Web Development Instructor",
+				"company": "Gomycode",
+				"period": "September 2022 — April 2023",
+				"description": [
+					"Taught Python fundamentals and full-stack web development (HTML, CSS, JS, React, Node.js, MongoDB) in-person courses",
+					"Mentored students through capstone projects, preparing them for school-arranged internships"
+				]
+			}
+		],
+		"skills": [
+			{
+				"category": "Languages",
+				"items": ["TypeScript", "JavaScript", "Java", "Python", "SQL", "Bash", "HTML", "CSS"]
+			},
+			{
+				"category": "Frameworks & Libraries",
+				"items": [
+					"React",
+					"Node.js",
+					"Next.js",
+					"Express",
+					"Fastify",
+					"Nest.js",
+					"Astro",
+					"Prisma",
+					"Tailwind CSS",
+					"D3.js",
+					"Phaser.js",
+					"Playwright",
+					"Vitest",
+					"Jest",
+					"Tanstack",
+					"Socket.IO"
+				]
+			},
+			{
+				"category": "Infrastructure",
+				"items": [
+					"Docker",
+					"Ansible",
+					"Linux",
+					"AWS",
+					"Gitlab CI",
+					"Cloudflare",
+					"Nginx",
+					"Caddy",
+					"Hashicorp Vault",
+					"Openbao",
+					"Sentry",
+					"Better Stack",
+					"Tailscale / Headscale",
+					"Grafana",
+					"Prometheus",
+					"Loki",
+					"OpenTelemetry",
+					"Zitadel"
+				]
+			},
+			{
+				"category": "Data & Messaging",
+				"items": ["PostgreSQL", "MongoDB", "Redis", "Kafka", "RabbitMQ"]
+			},
+			{
+				"category": "Practices",
+				"items": [
+					"Testing",
+					"REST",
+					"WebSockets",
+					"WebRTC",
+					"Event-Driven Architecture",
+					"Domain Driven Design",
+					"Code Review",
+					"Agile",
+					"Observability",
+					"Security Awareness",
+					"CI/CD",
+					"Performance Optimization",
+					"Incident Response",
+					"On-Call"
+				]
+			}
+		],
+		"education": [
+			{
+				"degree": "Masters in Computer Science (Computer Vision)",
+				"institution": "University Of Science And Technology Houari Boumediene"
+			},
+			{
+				"degree": "Bachelors in Computer Science",
+				"institution": "University Of Science And Technology Houari Boumediene"
+			}
+		]
+	}
+}
