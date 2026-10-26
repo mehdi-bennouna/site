@@ -2,12 +2,11 @@
 	"name": "Mehdi Bennouna",
 	"role": "Software Engineer",
 	"home": {
-		"bio": "Generalist software engineer focused on building reliable, maintainable systems — equally comfortable across the frontend, backend, and infrastructure layers.",
-		"note": "Thanks for visiting!"
+		"bio": "Full stack developer focused on building reliable, maintainable systems, leaning toward backend and DevOps, with a strong emphasis on observability and reliability in production"
 	},
 	"site": {
-		"name": "example.com",
-		"url": "https://example.com",
+		"name": "mehdi-bennouna.com",
+		"url": "https://mehdi-bennouna.com",
 		"title": "Mehdi Bennouna - Software Engineer",
 		"description": "Software engineer specializing in web applications, APIs, and cloud infrastructure",
 		"locale": "en_US",
